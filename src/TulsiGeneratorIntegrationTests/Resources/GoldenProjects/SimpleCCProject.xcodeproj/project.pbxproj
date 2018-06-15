@@ -153,7 +153,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE475583130F2B4800000000 /* Build configuration list for PBXNativeTarget "ccBinary" */;
 			buildPhases = (
-				84B42271BE3E215900000000 /* ShellScript */,
+				84B422717004956B00000000 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -191,7 +191,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		84B42271BE3E215900000000 /* ShellScript */ = {
+		84B422717004956B00000000 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 0;
 			files = (
@@ -202,7 +202,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "set -e\ncd \"${SRCROOT}/..\"\nexec \"${PROJECT_FILE_PATH}/.tulsi/Scripts/bazel_build.py\" //tulsi_e2e_ccsimple:ccBinary --bazel \"/fake/tulsi_test_bazel\" --bazel_bin_path \"bazel-bin\" --verbose --bazel_options[Debug] --define=TULSI_TEST=dbg --ios_minimum_os=7.0 --macos_minimum_os=10.10 --tvos_minimum_os=10.0 --watchos_minimum_os=3.0 --xcode_version=9.2 -- --bazel_options[Release] --define=TULSI_TEST=rel --ios_minimum_os=7.0 --macos_minimum_os=10.10 --tvos_minimum_os=10.0 --watchos_minimum_os=3.0 --xcode_version=9.2 -- --bazel_startup_options[Debug] --bazelrc=/dev/null -- ";
+			shellScript = "set -e\ncd \"${SRCROOT}/..\"\nexec \"${PROJECT_FILE_PATH}/.tulsi/Scripts/bazel_build.py\" //tulsi_e2e_ccsimple:ccBinary --bazel \"/fake/tulsi_test_bazel\" --bazel_bin_path \"bazel-bin\" --verbose --bazel_options[Debug] --define=TULSI_TEST=dbg --workspace_status_command=/usr/bin/true --ios_minimum_os=7.0 --macos_minimum_os=10.10 --tvos_minimum_os=10.0 --watchos_minimum_os=3.0 --xcode_version=9.2 -- --bazel_options[Release] --define=TULSI_TEST=rel --workspace_status_command=/usr/bin/true --ios_minimum_os=7.0 --macos_minimum_os=10.10 --tvos_minimum_os=10.0 --watchos_minimum_os=3.0 --xcode_version=9.2 -- --bazel_startup_options[Debug] --bazelrc=/dev/null -- ";
 			showEnvVarsInLog = 1;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -256,10 +256,8 @@
 				PYTHONIOENCODING = utf8;
 				SDKROOT = iphoneos;
 				TULSI_BWRS = "${TULSI_WR}/tulsi-workspace";
-				TULSI_NORMALIZED_DEBUG_INFO = YES;
-				TULSI_PRESERVE_TULSI_INCLUDES = YES;
+				TULSI_DIRECT_DBG_PREFIX_MAP = YES;
 				TULSI_PROJECT = SimpleCCProject;
-				TULSI_UPDATE_DSYM_CACHE = YES;
 				TULSI_VERSION = 9.99.999.9999;
 				TULSI_WR = "${SRCROOT}/..";
 			};
@@ -321,11 +319,9 @@
 				PYTHONIOENCODING = utf8;
 				SDKROOT = iphoneos;
 				TULSI_BWRS = "${TULSI_WR}/tulsi-workspace";
+				TULSI_DIRECT_DBG_PREFIX_MAP = YES;
 				TULSI_MUST_USE_DSYM = YES;
-				TULSI_NORMALIZED_DEBUG_INFO = YES;
-				TULSI_PRESERVE_TULSI_INCLUDES = YES;
 				TULSI_PROJECT = SimpleCCProject;
-				TULSI_UPDATE_DSYM_CACHE = YES;
 				TULSI_VERSION = 9.99.999.9999;
 				TULSI_WR = "${SRCROOT}/..";
 			};
@@ -393,10 +389,8 @@
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME).h";
 				TULSI_BWRS = "${TULSI_WR}/tulsi-workspace";
-				TULSI_NORMALIZED_DEBUG_INFO = YES;
-				TULSI_PRESERVE_TULSI_INCLUDES = YES;
+				TULSI_DIRECT_DBG_PREFIX_MAP = YES;
 				TULSI_PROJECT = SimpleCCProject;
-				TULSI_UPDATE_DSYM_CACHE = YES;
 				TULSI_VERSION = 9.99.999.9999;
 				TULSI_WR = "${SRCROOT}/..";
 			};
@@ -459,11 +453,9 @@
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME).h";
 				TULSI_BWRS = "${TULSI_WR}/tulsi-workspace";
+				TULSI_DIRECT_DBG_PREFIX_MAP = YES;
 				TULSI_MUST_USE_DSYM = YES;
-				TULSI_NORMALIZED_DEBUG_INFO = YES;
-				TULSI_PRESERVE_TULSI_INCLUDES = YES;
 				TULSI_PROJECT = SimpleCCProject;
-				TULSI_UPDATE_DSYM_CACHE = YES;
 				TULSI_VERSION = 9.99.999.9999;
 				TULSI_WR = "${SRCROOT}/..";
 			};

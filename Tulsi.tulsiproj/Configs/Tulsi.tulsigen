@@ -1,33 +1,28 @@
 {
-  "additionalFilePaths" : [
-    "BUILD"
+  "sourceFilters" : [
+    "src/..."
+  ],
+  "buildTargets" : [
+    "//src/TulsiGeneratorIntegrationTests:TulsiGeneratorIntegrationTests",
+    "//src/TulsiGeneratorTests:TulsiGeneratorTests",
+    "//:tulsi"
   ],
   "projectName" : "Tulsi",
-  "buildTargets" : [
-    "\/\/:tulsi",
-    "\/\/src/TulsiGeneratorTests:TulsiGeneratorTests"
-  ],
   "optionSet" : {
-    "BazelBuildStartupOptionsDebug" : {
-      "p" : "$(inherited)"
-    },
-    "BazelBuildStartupOptionsFastbuild" : {
+    "BazelBuildOptionsDebug" : {
       "p" : "$(inherited)"
     },
     "BazelBuildStartupOptionsRelease" : {
       "p" : "$(inherited)"
     },
-    "BazelBuildOptionsDebug" : {
-      "p" : "$(inherited)"
-    },
-    "BazelBuildOptionsFastbuild" : {
+    "BazelBuildStartupOptionsDebug" : {
       "p" : "$(inherited)"
     },
     "BazelBuildOptionsRelease" : {
       "p" : "$(inherited)"
     }
   },
-  "sourceFilters" : [
-    "src/..."
+  "additionalFilePaths" : [
+    "BUILD"
   ]
 }

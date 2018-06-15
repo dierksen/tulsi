@@ -13,6 +13,8 @@
 // limitations under the License.
 
 import XCTest
+@testable import BazelIntegrationTestCase
+@testable import EndToEndIntegrationTestCase
 @testable import TulsiGenerator
 
 
@@ -111,8 +113,8 @@ class EndToEndGenerationTests: EndToEndIntegrationTestCase {
       _ = try generateProjectNamed("BrokenSourceBuildProject",
                                    buildTargets: buildTargets,
                                    pathFilters: ["\(testDir)/...",
-                                                 "blaze-bin/...",
-                                                 "blaze-genfiles/..."],
+                                                 "bazel-bin/...",
+                                                 "bazel-genfiles/..."],
                                    outputDir: "tulsi_e2e_output")
     } catch Error.projectGenerationFailure(let info) {
       // Expected failure on malformed BUILD file.
@@ -161,11 +163,34 @@ class EndToEndGenerationTests: EndToEndIntegrationTestCase {
     let projectURL = try generateProjectNamed(projectName,
                                               buildTargets: buildTargets,
                                               pathFilters: ["\(testDir)/...",
-                                                            "blaze-bin/...",
-                                                            "blaze-genfiles/..."],
+                                                            "bazel-bin/...",
+                                                            "bazel-genfiles/..."],
                                               additionalFilePaths: additionalFilePaths,
                                               outputDir: "tulsi_e2e_output",
                                               options: projectOptions)
+
+    let diffLines = diffProjectAt(projectURL, againstGoldenProject: projectName)
+    validateDiff(diffLines)
+  }
+
+  func test_LegacySwiftProject() throws {
+    let testDir = "tulsi_e2e_legacy_swift"
+    installBUILDFile("LegacySwift", intoSubdirectory: testDir)
+
+    let appLabel = BuildLabel("//\(testDir):Application")
+    let buildTargets = [RuleInfo(label: appLabel,
+                                 type: "ios_application",
+                                 linkedTargetLabels: [])]
+    let additionalFilePaths = ["\(testDir)/BUILD"]
+
+    let projectName = "LegacySwiftProject"
+    let projectURL = try generateProjectNamed(projectName,
+                                              buildTargets: buildTargets,
+                                              pathFilters: ["\(testDir)/...",
+                                                            "bazel-bin/...",
+                                                            "bazel-genfiles/..."],
+                                              additionalFilePaths: additionalFilePaths,
+                                              outputDir: "tulsi_e2e_output")
 
     let diffLines = diffProjectAt(projectURL, againstGoldenProject: projectName)
     validateDiff(diffLines)
@@ -185,8 +210,8 @@ class EndToEndGenerationTests: EndToEndIntegrationTestCase {
     let projectURL = try generateProjectNamed(projectName,
                                               buildTargets: buildTargets,
                                               pathFilters: ["\(testDir)/...",
-                                                            "blaze-bin/...",
-                                                            "blaze-genfiles/..."],
+                                                            "bazel-bin/...",
+                                                            "bazel-genfiles/..."],
                                               additionalFilePaths: additionalFilePaths,
                                               outputDir: "tulsi_e2e_output")
 
@@ -208,8 +233,8 @@ class EndToEndGenerationTests: EndToEndIntegrationTestCase {
     let projectURL = try generateProjectNamed(projectName,
                                               buildTargets: buildTargets,
                                               pathFilters: ["\(testDir)/...",
-                                                            "blaze-bin/...",
-                                                            "blaze-genfiles/..."],
+                                                            "bazel-bin/...",
+                                                            "bazel-genfiles/..."],
                                               additionalFilePaths: additionalFilePaths,
                                               outputDir: "tulsi_e2e_output")
 
@@ -231,8 +256,8 @@ class EndToEndGenerationTests: EndToEndIntegrationTestCase {
     let projectURL = try generateProjectNamed("SkylarkBundlingProject",
                                               buildTargets: buildTargets,
                                               pathFilters: ["\(testDir)/...",
-                                                            "blaze-bin/\(testDir)/...",
-                                                            "blaze-genfiles/\(testDir)/..."],
+                                                            "bazel-bin/\(testDir)/...",
+                                                            "bazel-genfiles/\(testDir)/..."],
                                               additionalFilePaths: additionalFilePaths,
                                               outputDir: "tulsi_e2e_output")
 
@@ -258,8 +283,8 @@ class EndToEndGenerationTests: EndToEndIntegrationTestCase {
     let projectURL = try generateProjectNamed(projectName,
                                               buildTargets: buildTargets,
                                               pathFilters: ["\(testDir)/...",
-                                                            "blaze-bin/...",
-                                                            "blaze-genfiles/..."],
+                                                            "bazel-bin/...",
+                                                            "bazel-genfiles/..."],
                                               additionalFilePaths: additionalFilePaths,
                                               outputDir: "tulsi_e2e_output")
 
@@ -291,8 +316,8 @@ class EndToEndGenerationTests: EndToEndIntegrationTestCase {
     let projectURL = try generateProjectNamed(projectName,
                                               buildTargets: buildTargets,
                                               pathFilters: ["\(testDir)/...",
-                                                            "blaze-bin/...",
-                                                            "blaze-genfiles/..."],
+                                                            "bazel-bin/...",
+                                                            "bazel-genfiles/..."],
                                               additionalFilePaths: additionalFilePaths,
                                               outputDir: "tulsi_e2e_output")
 
