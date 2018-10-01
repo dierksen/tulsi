@@ -1,0 +1,79 @@
+{
+  "sourceFilters" : [
+    "tulsi_e2e_simple/..."
+  ],
+  "buildTargets" : [
+    "//tulsi_e2e_simple:Application",
+    "//tulsi_e2e_simple:TargetApplication",
+    "//tulsi_e2e_simple:XCTest"
+  ],
+  "projectName" : "SimpleProject",
+  "optionSet" : {
+    "BazelBuildOptionsDebug" : {
+      "p" : "--define=TULSI_TEST=dbg --workspace_status_command=/usr/bin/true --ios_minimum_os=7.0 --macos_minimum_os=10.10 --tvos_minimum_os=10.0 --watchos_minimum_os=3.0 --xcode_version=9.4"
+    },
+    "BazelBuildStartupOptionsRelease" : {
+      "p" : "--bazelrc=/dev/null"
+    },
+    "BazelBuildOptionsRelease" : {
+      "p" : "--define=TULSI_TEST=rel --workspace_status_command=/usr/bin/true --ios_minimum_os=7.0 --macos_minimum_os=10.10 --tvos_minimum_os=10.0 --watchos_minimum_os=3.0 --xcode_version=9.4"
+    },
+    "TestActionPreActionScript" : {
+      "t" : {
+        "//tulsi_e2e_simple:TargetApplication" : "This is a target specific test pre action script"
+      },
+      "p" : "This is a test pre action script"
+    },
+    "BuildActionPostActionScript" : {
+      "t" : {
+        "//tulsi_e2e_simple:TargetApplication" : "This is a target specific build post action script"
+      },
+      "p" : "This is a build post action script"
+    },
+    "LaunchActionPreActionScript" : {
+      "t" : {
+        "//tulsi_e2e_simple:TargetApplication" : "This is a target specific launch pre action script"
+      },
+      "p" : "This is a lauch pre action script"
+    },
+    "BazelContinueBuildingAfterError" : {
+      "p" : "YES"
+    },
+    "EnvironmentVariables" : {
+      "t" : {
+        "//tulsi_e2e_simple:TargetApplication" : "targetKey1=targetValue1\ntargetKey2=targetValue2=\ntargetKey3="
+      },
+      "p" : "projectKey=projectValue"
+    },
+    "BuildActionPreActionScript" : {
+      "t" : {
+        "//tulsi_e2e_simple:TargetApplication" : "This is a target specific build pre action script"
+      },
+      "p" : "This is a build pre action script"
+    },
+    "CommandlineArguments" : {
+      "t" : {
+        "//tulsi_e2e_simple:TargetApplication" : "--target-specific-test-flag"
+      },
+      "p" : "--project-flag"
+    },
+    "TestActionPostActionScript" : {
+      "t" : {
+        "//tulsi_e2e_simple:TargetApplication" : "This is a target specific test post action script"
+      },
+      "p" : "This is a test post action script"
+    },
+    "BazelBuildStartupOptionsDebug" : {
+      "p" : "--bazelrc=/dev/null"
+    },
+    "LaunchActionPostActionScript" : {
+      "t" : {
+        "//tulsi_e2e_simple:TargetApplication" : "This is a target specific launch post action script"
+      },
+      "p" : "This is a launch post action script"
+    }
+  },
+  "additionalFilePaths" : [
+    "tulsi_e2e_simple/BUILD"
+  ]
+}
