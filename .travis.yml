@@ -4,7 +4,7 @@ osx_image: xcode9.2
 
 before_install:
   - brew tap bazelbuild/tap
-  - brew tap-bin bazelbuild/tap
+  - brew tap-pin bazelbuild/tap
   - brew update
   - brew install bazel
 
